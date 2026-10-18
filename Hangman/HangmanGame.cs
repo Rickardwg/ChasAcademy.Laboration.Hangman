@@ -5,7 +5,7 @@ internal class HangmanGame
     private readonly List<string> _words = ["foo", "bar", "baz"];
     private string _secretWord = string.Empty;
     private const int _maxGuesses = 6;
-    internal HashSet<char> GuessedLetters { get; private set; } = []; // AI
+    internal HashSet<char> GuessedLetters { get; private set; } = []; // HashSet as datatype was suggested by AI, since it contains no duplicates and its elements are in no particular order.
     internal int IncorrectGuesses { get; private set; } = 0;
 
     internal void Reset()
@@ -40,7 +40,7 @@ internal class HangmanGame
 
     internal string GetDisplayWord()
     {
-        return new string([.. _secretWord.Select(letter => GuessedLetters.Contains(letter) ? letter : '_')]); // AI
+        return new string([.. _secretWord.Select(letter => GuessedLetters.Contains(letter) ? letter : '_')]); // LINQ syntax was written with help from AI.
     }
 
     internal bool HasWon()

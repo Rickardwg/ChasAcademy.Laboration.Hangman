@@ -2,7 +2,7 @@
 
 internal class HangmanView
 {
-    // AI
+    // ASCII-art was generated with AI.
     private readonly string[] _hangmanStages =
     [
         "",
