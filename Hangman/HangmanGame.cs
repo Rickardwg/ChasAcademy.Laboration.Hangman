@@ -2,5 +2,49 @@
 
 internal class HangmanGame
 {
-    private readonly List<string> Words = ["foo", "bar", "baz"];
+    private readonly List<string> _words = ["foo", "bar", "baz"];
+    private string _secretWord = string.Empty;
+    private readonly HashSet<char> _guessedLetters = []; // AI
+    internal int IncorrectGuesses { get; private set; } = 0;
+    private int _maxGuesses = 6;
+
+    internal void InitializeSecretWord()
+    {
+        var index = Random.Shared.Next(_words.Count);
+        _secretWord = _words[index];
+    }
+
+    internal bool CheckGuess(char guess)
+    {
+        guess = char.ToLowerInvariant(guess);
+
+        if (_guessedLetters.Contains(guess))
+        {
+            return false;
+        }
+
+        _guessedLetters.Add(guess);
+
+        if (!_secretWord.Contains(guess))
+        {
+            IncorrectGuesses++;
+        }
+
+        return true;
+    }
+
+    internal string GetDisplayWord()
+    {
+        return new string([.. _secretWord.Select(letter => _guessedLetters.Contains(letter) ? letter : '_')]); // AI
+    }
+
+    internal bool HasWon()
+    {
+        return _secretWord.All(letter => _guessedLetters.Contains(letter));
+    }
+
+    internal bool HasLost()
+    {
+        return IncorrectGuesses == _maxGuesses;
+    }
 }
