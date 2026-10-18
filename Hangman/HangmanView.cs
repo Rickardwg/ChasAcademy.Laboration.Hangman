@@ -115,7 +115,7 @@ internal class HangmanView
         {
             Console.Write("Play Again? (y/n): ");
             input = Console.ReadLine().ToLowerInvariant();
-        } while (input != "y" || input != "n");
+        } while (input != "y" && input != "n");
 
         return char.Parse(input);
     }
