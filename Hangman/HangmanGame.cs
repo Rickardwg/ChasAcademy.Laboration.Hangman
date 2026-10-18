@@ -4,9 +4,9 @@ internal class HangmanGame
 {
     private readonly List<string> _words = ["foo", "bar", "baz"];
     private string _secretWord = string.Empty;
-    private readonly HashSet<char> _guessedLetters = []; // AI
-    internal int IncorrectGuesses { get; private set; } = 0;
     private int _maxGuesses = 6;
+    internal HashSet<char> GuessedLetters { get; private set; } = []; // AI
+    internal int IncorrectGuesses { get; private set; } = 0;
 
     internal void InitializeSecretWord()
     {
@@ -18,12 +18,12 @@ internal class HangmanGame
     {
         guess = char.ToLowerInvariant(guess);
 
-        if (_guessedLetters.Contains(guess))
+        if (GuessedLetters.Contains(guess))
         {
             return false;
         }
 
-        _guessedLetters.Add(guess);
+        GuessedLetters.Add(guess);
 
         if (!_secretWord.Contains(guess))
         {
@@ -35,12 +35,12 @@ internal class HangmanGame
 
     internal string GetDisplayWord()
     {
-        return new string([.. _secretWord.Select(letter => _guessedLetters.Contains(letter) ? letter : '_')]); // AI
+        return new string([.. _secretWord.Select(letter => GuessedLetters.Contains(letter) ? letter : '_')]); // AI
     }
 
     internal bool HasWon()
     {
-        return _secretWord.All(letter => _guessedLetters.Contains(letter));
+        return _secretWord.All(letter => GuessedLetters.Contains(letter));
     }
 
     internal bool HasLost()
