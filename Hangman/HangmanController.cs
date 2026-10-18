@@ -7,7 +7,6 @@ internal class HangmanController(HangmanGame game, HangmanView view)
     internal void Play()
     {
         var isPlayAgain = true;
-        
 
         while (isPlayAgain)
         {
