@@ -2,7 +2,7 @@
 
 internal class HangmanView
 {
-    // ASCII-art was generated with AI.
+    // ASCII-art was generated with AI. It was misaligned and edited by me. The first stage was also changed by me to not display multiple empty rows.
     private readonly string[] _hangmanStages =
     [
         "",
