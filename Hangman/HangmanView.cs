@@ -103,7 +103,7 @@ internal class HangmanView
         {
             Console.Write("Enter: ");
             input = Console.ReadLine();
-        } while (input.Length != 1);
+        } while (input.Length != 1 || input.Any(c => !char.IsLetter(c)));
 
         return char.Parse(input);
     }
