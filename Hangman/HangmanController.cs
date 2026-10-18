@@ -6,36 +6,53 @@ internal class HangmanController(HangmanGame game, HangmanView view)
     private readonly HangmanView _view = view;
     internal void Play()
     {
-        _game.InitializeSecretWord();
+        var isPlayAgain = true;
+        
 
-        while (true)
+        while (isPlayAgain)
         {
-            Console.Clear();
+            var isGameOver = false;
+            _game.Reset();
+            _game.InitializeSecretWord();
 
-            _view.DisplayHeader();
-            _view.DisplayHangman(_game.IncorrectGuesses);
-
-            var secretWord = _game.GetDisplayWord();
-            _view.DisplaySecretWord(secretWord);
-
-            var guessedLetters = _game.GuessedLetters;
-            _view.DisplayGuessedLetters(guessedLetters);
-
-            if (_game.HasWon())
+            while (!isGameOver)
             {
-                _view.DisplayWinMessage();
-                break;
+                Console.Clear();
+
+                _view.DisplayHeader();
+                _view.DisplayHangman(_game.IncorrectGuesses);
+
+                var secretWord = _game.GetDisplayWord();
+                _view.DisplaySecretWord(secretWord);
+
+                var guessedLetters = _game.GuessedLetters;
+                _view.DisplayGuessedLetters(guessedLetters);
+
+                if (_game.HasWon())
+                {
+                    _view.DisplayWinMessage();
+                    isGameOver = true;
+                    continue;
+                }
+
+                if (_game.HasLost())
+                {
+                    _view.DisplayLoseMessage();
+                    isGameOver = true;
+                    continue;
+                }
+
+                while (!_game.CheckGuess(_view.ReadGuess()))
+                {
+                    _view.DisplayError("Letter has already been guessed!");
+                }
             }
+            
+            var response = _view.ReadPlayAgainResponse();
 
-            if (_game.HasLost())
+            if (response == 'n')
             {
-                _view.DisplayLoseMessage();
-                break;
-            }
-
-            while (!_game.CheckGuess(_view.ReadGuess()))
-            {
-                _view.DisplayError("Letter has already been guessed!");
+                isPlayAgain = false;
             }
         }
     }

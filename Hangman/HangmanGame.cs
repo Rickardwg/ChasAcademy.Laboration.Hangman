@@ -8,6 +8,11 @@ internal class HangmanGame
     internal HashSet<char> GuessedLetters { get; private set; } = []; // AI
     internal int IncorrectGuesses { get; private set; } = 0;
 
+    internal void Reset()
+    {
+        GuessedLetters.Clear();
+        IncorrectGuesses = 0;
+    }
     internal void InitializeSecretWord()
     {
         var index = Random.Shared.Next(_words.Count);
