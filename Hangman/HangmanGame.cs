@@ -4,7 +4,7 @@ internal class HangmanGame
 {
     private readonly List<string> _words = ["foo", "bar", "baz"];
     private string _secretWord = string.Empty;
-    private int _maxGuesses = 6;
+    private const int _maxGuesses = 6;
     internal HashSet<char> GuessedLetters { get; private set; } = []; // AI
     internal int IncorrectGuesses { get; private set; } = 0;
 
