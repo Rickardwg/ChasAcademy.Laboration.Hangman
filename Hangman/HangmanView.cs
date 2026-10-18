@@ -96,6 +96,11 @@ internal class HangmanView
         Console.WriteLine("YOU LOSE!");
     }
 
+    internal void DisplayError(string error)
+    {
+        Console.WriteLine(error);
+    }
+
     internal char ReadGuess()
     {
         string? input;
