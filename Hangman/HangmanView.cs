@@ -107,4 +107,16 @@ internal class HangmanView
 
         return char.Parse(input);
     }
+
+    internal char ReadPlayAgainResponse()
+    {
+        string? input;
+        do
+        {
+            Console.Write("Play Again? (y/n): ");
+            input = Console.ReadLine().ToLowerInvariant();
+        } while (input != "y" || input != "n");
+
+        return char.Parse(input);
+    }
 }
