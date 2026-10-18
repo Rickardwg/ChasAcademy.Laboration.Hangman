@@ -95,4 +95,16 @@ internal class HangmanView
     {
         Console.WriteLine("YOU LOSE!");
     }
+
+    internal char ReadGuess()
+    {
+        string? input;
+        do
+        {
+            Console.Write("Enter: ");
+            input = Console.ReadLine();
+        } while (input.Length != 1);
+
+        return char.Parse(input);
+    }
 }
