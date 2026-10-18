@@ -10,6 +10,8 @@ internal class HangmanController(HangmanGame game, HangmanView view)
 
         while (true)
         {
+            Console.Clear();
+
             _view.DisplayHeader();
             _view.DisplayHangman(_game.IncorrectGuesses);
 
@@ -18,11 +20,6 @@ internal class HangmanController(HangmanGame game, HangmanView view)
 
             var guessedLetters = _game.GuessedLetters;
             _view.DisplayGuessedLetters(guessedLetters);
-
-            while (!_game.CheckGuess(_view.ReadGuess()))
-            {
-                _view.DisplayError("Letter has already been guessed!");
-            }
 
             if (_game.HasWon())
             {
@@ -35,7 +32,11 @@ internal class HangmanController(HangmanGame game, HangmanView view)
                 _view.DisplayLoseMessage();
                 break;
             }
+
+            while (!_game.CheckGuess(_view.ReadGuess()))
+            {
+                _view.DisplayError("Letter has already been guessed!");
+            }
         }
-        
     }
 }
