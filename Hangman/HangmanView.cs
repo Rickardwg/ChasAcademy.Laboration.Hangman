@@ -73,6 +73,7 @@ internal class HangmanView
 
     internal void DisplayGuessedLetters(IEnumerable<char> guessedLetters)
     {
+        Console.Write("GUESSED LETTERS: ");
         foreach (char c in guessedLetters)
         {
             Console.Write(c + " ");
