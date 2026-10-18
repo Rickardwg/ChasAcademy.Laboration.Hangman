@@ -8,7 +8,7 @@ internal class HangmanController(HangmanGame game, HangmanView view)
     {
         var playAgain = true;
 
-        while (playAgain) 
+        while (playAgain) // Play again feature suggested by AI, but implemented by me.
         {
             var gameOver = false;
             _game.Reset();
