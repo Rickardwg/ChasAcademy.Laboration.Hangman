@@ -2,7 +2,8 @@
 
 internal class HangmanGame
 {
-    private readonly List<string> _words = ["foo", "bar", "baz"];
+    // words were generated with AI.
+    private readonly List<string> _words = ["apple", "bridge", "castle", "dragon", "forest", "guitar", "island", "jungle", "knight", "lantern", "mountain", "puzzle", "rocket", "shadow", "thunder", "umbrella", "village", "whisper", "journey", "treasure"];
     private string _secretWord = string.Empty;
     private const int _maxGuesses = 6;
     internal HashSet<char> GuessedLetters { get; private set; } = []; // HashSet as datatype was suggested by AI, since it contains no duplicates and its elements are in no particular order.
