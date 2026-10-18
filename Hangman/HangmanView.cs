@@ -68,7 +68,7 @@ internal class HangmanView
 
     internal void DisplaySecretWord(string secretWord)
     {
-        Console.WriteLine(secretWord);
+        Console.WriteLine($"SECRET WORD: {secretWord}");
     }
 
     internal void DisplayGuessedLetters(IEnumerable<char> guessedLetters)
