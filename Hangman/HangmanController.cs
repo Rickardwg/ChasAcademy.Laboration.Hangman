@@ -6,15 +6,15 @@ internal class HangmanController(HangmanGame game, HangmanView view)
     private readonly HangmanView _view = view;
     internal void Play()
     {
-        var isPlayAgain = true;
+        var playAgain = true;
 
-        while (isPlayAgain)
+        while (playAgain) 
         {
-            var isGameOver = false;
+            var gameOver = false;
             _game.Reset();
             _game.InitializeSecretWord();
 
-            while (!isGameOver)
+            while (!gameOver)
             {
                 Console.Clear();
 
@@ -30,14 +30,14 @@ internal class HangmanController(HangmanGame game, HangmanView view)
                 if (_game.HasWon())
                 {
                     _view.DisplayWinMessage();
-                    isGameOver = true;
+                    gameOver = true;
                     continue;
                 }
 
                 if (_game.HasLost())
                 {
                     _view.DisplayLoseMessage();
-                    isGameOver = true;
+                    gameOver = true;
                     continue;
                 }
 
@@ -51,7 +51,7 @@ internal class HangmanController(HangmanGame game, HangmanView view)
 
             if (response == 'n')
             {
-                isPlayAgain = false;
+                playAgain = false;
             }
         }
     }
